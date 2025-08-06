@@ -4,43 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Game _game;
-    [SerializeField] private Transform _left;
-    [SerializeField] private Transform _right;
     [SerializeField] private float _distance;
     [SerializeField] private float _speed;
-    
-    private Coroutine _moveRight;
-    private Coroutine _moveLeft;
-    private void Start()
-    {
-        
-        _moveRight = StartCoroutine(MoveRight());
-        _moveLeft = StartCoroutine(MoveLeft());
-    }
 
+    
+    
     private void OnDestroy()
     {
         StopAllCoroutines();
     }
 
-    private IEnumerator MoveRight()
+    public void MoveTo(Vector3 targetPos)
     {
-        while (Vector3.Distance(transform.position, _right.position) > _distance)
-        {
-            GetComponent<Rigidbody>().MovePosition(_right.position);
-            transform.Translate(Vector3.Lerp(transform.position, _right.position, 1.0f));
-            yield return null;
-        }
-        
+        StopAllCoroutines();
+        StartCoroutine(Move(targetPos));
     }
-
-    private IEnumerator MoveLeft()
+    private IEnumerator Move(Vector3 targetPos)
     {
-        while (Vector3.Distance(transform.position, _left.position) > _distance)
+        while (Vector3.Distance(transform.position, targetPos) > _distance)
         {
-            GetComponent<Rigidbody>().MovePosition(_left.position);
-            transform.Translate(Vector3.Lerp(transform.position, _left.position, 1.0f));
+            transform.position = Vector3.Lerp(transform.position, targetPos, _speed * Time.deltaTime);
             yield return null;
         }
 

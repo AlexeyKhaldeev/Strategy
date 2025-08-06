@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
 
     private void PrintFrame()
     {
-        Debug.Log(Time.frameCount);
+       // Debug.Log(Time.frameCount);
     }
 
     
