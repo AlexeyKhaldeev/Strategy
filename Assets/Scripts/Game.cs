@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField] private GameObject playerPrefab;
     private float _time;
     private Coroutine _coroutine;
 
