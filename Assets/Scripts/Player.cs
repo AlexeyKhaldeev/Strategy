@@ -3,31 +3,48 @@ using System.Collections;
 using System.Threading;
 using UnityEngine;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _distance; 
-    [SerializeField] private float _speed;
+    private static readonly int Speed = Animator.StringToHash("Speed");
+    
+    [SerializeField] private NavMeshAgent _agent;
+    [SerializeField] private Animator _animator;
 
+    private Ground[] _grounds;
     private readonly CancellationTokenSource _tokenSource = new();
+    
+    private void Awake()
+    {
+        _grounds = FindObjectsOfType<Ground>();
+    }
+
+    private void OnEnable()
+    {
+        foreach (var ground  in _grounds)
+        {
+            ground.GroundTouched += MoveTo;
+        }
+    }
 
     private void OnDisable()
     {
-        StopAllCoroutines();
+        foreach (var ground  in _grounds)
+        {
+            ground.GroundTouched -= MoveTo;
+        }
+    }
+
+    private void Update()
+    {
+      
+        _animator.SetFloat(Speed, _agent.velocity.magnitude);
     }
 
     public void MoveTo(Vector3 targetPos)
     {
-        StopAllCoroutines();
-        StartCoroutine(Move(targetPos));
+        _agent.SetDestination(targetPos);
     }
-    private IEnumerator Move(Vector3 targetPos)
-    {
-        while (Vector3.Distance(transform.position, targetPos) > _distance)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, _speed * Time.deltaTime);
-            yield return null;
-        }
-
-    }
-}
+} 
