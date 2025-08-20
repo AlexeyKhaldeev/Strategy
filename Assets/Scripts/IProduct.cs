@@ -1,5 +1,7 @@
+using UnityEngine;
+
 public interface IProduct
 {
-    public string ProductName { get; set; }
-    public void Initialize();
+    public void MoveTo(Vector3 targetPos);
+
 }

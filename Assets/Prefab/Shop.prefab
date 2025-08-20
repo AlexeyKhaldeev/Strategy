@@ -222,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1962684494879042320}
   - component: {fileID: 8786606014435504381}
+  - component: {fileID: -6289063955447189483}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -265,7 +266,26 @@ MonoBehaviour:
   _initialItem: {fileID: 8462868942130148769}
   _parent: {fileID: 8449970257967257739}
   _list: {fileID: 11400000, guid: 278b7cf6b43b143a0a504022146d5383, type: 2}
-  _player: {fileID: 4305555321525252332, guid: 214e08cd5e5d74c458e2a81b7ec2c84c, type: 3}
+  _factory: {fileID: -6289063955447189483}
+--- !u!114 &-6289063955447189483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6179752168616466369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9f34625e7cf4c808d9fddd03e6c998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _units:
+  - _id: dog
+    _item: {fileID: 4305555321525252332, guid: 214e08cd5e5d74c458e2a81b7ec2c84c, type: 3}
+    _price: 10
+  - _id: slime
+    _item: {fileID: 2351006807222251009, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
+    _price: 20
 --- !u!1 &6515943209091241743
 GameObject:
   m_ObjectHideFlags: 0

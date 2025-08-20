@@ -5,5 +5,5 @@ using Object = UnityEngine.Object;
 
 public abstract class Factory : MonoBehaviour
 {
-     public abstract IProduct GetProduct();
+     public abstract IProduct GetProduct(string id);
 }

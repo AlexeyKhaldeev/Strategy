@@ -1,17 +1,14 @@
 using System;
 using UnityEngine;
 
-
-[CreateAssetMenu(menuName = "Strategy/ShopUnitList", fileName = "ShopUnitList")]
-public class ShopUnitList : ScriptableObject
-{
-    public ShopUnit[] Units => _units;
-
-    [SerializeField] private ShopUnit[] _units;
-}
-
 [Serializable]
 public struct ShopUnit
 {
-    public int Price;
+    [SerializeField] private string _id;
+    [SerializeField] private DogUnit _item;
+    [SerializeField] private int _price;
+
+    public string ID => _id;
+    public DogUnit Item => _item;
+    public int Price => _price;
 }

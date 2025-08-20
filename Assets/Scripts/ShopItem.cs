@@ -9,9 +9,17 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TMP_Text _price;
 
-    public Action _buyClicked;
-    
-    public void SetCallBack(Action value)
+    private string _id;
+
+    private Action<string> _buyClicked;
+
+
+    public void SetId(string id)
+    {
+        _id = id;
+    }
+
+public void SetCallBack(Action<string> value)
     {
         _buyClicked = value;
     }
@@ -22,6 +30,6 @@ public class ShopItem : MonoBehaviour
 
     public void OnBuyButtonClick()
     {
-        _buyClicked?.Invoke();
+        _buyClicked?.Invoke(_id);
     }
 }

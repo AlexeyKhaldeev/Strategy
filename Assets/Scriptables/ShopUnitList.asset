@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: ShopUnitList
   m_EditorClassIdentifier: Assembly-CSharp::ShopUnitList
   _units:
-  - Price: 9
-  - Price: 19
-  - Price: 5
-  - Price: 29
-  - Price: 49
+  - _id: dog
+    _item: {fileID: 4305555321525252332, guid: 214e08cd5e5d74c458e2a81b7ec2c84c, type: 3}
+    _price: 10
+  - _id: slime
+    _item: {fileID: 2351006807222251009, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
+    _price: 20
